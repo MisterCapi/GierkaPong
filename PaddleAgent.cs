@@ -29,7 +29,10 @@ public class PaddleAgent : Agent
 
     public override void OnActionReceived(ActionBuffers actions)
     {
-        float moveY = actions.ContinuousActions[0];
+        float moveY = actions.ContinuousActions[0]; // ta linijka to odpowiednik Input.GetAxisRaw("Vertical")
+	// tylko zamiast z klawiatury, bierzemy wartosc do przesuniecia od modelu
+	// bierzemy 0 wartosc z continous actions (bo to jedyna jaka mamy, bo ustalamy w unity, ze mamy tylko jedna taka akcje)
+	// i ta wartosc to jest po prostu informacja o ile w gore albo w dol mamy sie przesunac
         rb.velocity = new Vector2(rb.velocity.x, moveY * speed);
     }
 
